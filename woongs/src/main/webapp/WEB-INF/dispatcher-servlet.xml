@@ -106,4 +106,8 @@
 
 	<bean id="MyPageDao" class="com.woongjin.woongs.model.MyPageDao"
 		p:sqlSessionFactory-ref="sqlSessionFactory"></bean>
+		
+	<bean id="CartDao" class="com.woongjin.woongs.model.CartDao"
+		p:sqlSessionFactory-ref="sqlSessionFactory"></bean>
+		
 </beans>
