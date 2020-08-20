@@ -1,0 +1,13 @@
+127.0.0.1 - - [15/Aug/2020:22:30:48 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [15/Aug/2020:22:31:55 +0900] "GET /woongs/WEB-INF/classes/com/woongjin/woongs/controller/CartController.java HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [15/Aug/2020:22:31:55 +0900] "GET /favicon.ico HTTP/1.1" 404 818
+0:0:0:0:0:0:0:1 - - [15/Aug/2020:22:32:41 +0900] "GET /woongs/ HTTP/1.1" 200 179
+0:0:0:0:0:0:0:1 - - [15/Aug/2020:22:32:46 +0900] "GET /woongs/main HTTP/1.1" 200 2254
+0:0:0:0:0:0:0:1 - - [15/Aug/2020:22:32:46 +0900] "GET /woongs/resources/js/common.js HTTP/1.1" 200 112
+0:0:0:0:0:0:0:1 - - [15/Aug/2020:22:32:46 +0900] "GET /woongs/resources/Images/test.jpg HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [15/Aug/2020:22:32:47 +0900] "POST /woongs/tag HTTP/1.1" 200 150
+0:0:0:0:0:0:0:1 - - [15/Aug/2020:22:32:47 +0900] "POST /woongs/post HTTP/1.1" 200 5986
+0:0:0:0:0:0:0:1 - - [15/Aug/2020:22:32:47 +0900] "GET /woongs/resources/Images/%EF%BF%BD%EF%BF%BD.jpg HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [15/Aug/2020:22:32:47 +0900] "GET /woongs/resources/Images/letsdoit.png HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [15/Aug/2020:22:32:47 +0900] "GET /woongs/resources/Images/test.png HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [15/Aug/2020:22:32:47 +0900] "GET /woongs/resources/images/letsdoit.png HTTP/1.1" 200 1073926

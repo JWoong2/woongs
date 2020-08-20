@@ -1,0 +1,28 @@
+
+8월 14, 2020 21:09:06.220 NEW SESSION
+8월 14, 2020 21:09:06.221 [8068:2064:0814/210906.216:ERROR:account_info_fetcher.cc(60)] OnGetTokenFailure: Invalid credentials (credentials rejected by client).
+8월 14, 2020 21:31:20.117 [8068:4160:0814/213120.117:ERROR:connection_factory_impl.cc(420)] Failed to connect to MCS endpoint with error -106
+8월 14, 2020 21:31:46.586 [8068:4160:0814/213146.586:ERROR:connection_factory_impl.cc(420)] Failed to connect to MCS endpoint with error -106
+8월 14, 2020 21:32:32.274 [8068:4160:0814/213232.274:ERROR:connection_factory_impl.cc(420)] Failed to connect to MCS endpoint with error -105
+8월 14, 2020 23:11:25.310 [8068:2064:0814/231125.310:ERROR:page_load_metrics_update_dispatcher.cc(165)] Invalid first_paint 0.195 s for first_image_paint 0.183 s
+8월 14, 2020 23:11:26.456 [8068:2064:0814/231126.455:ERROR:page_load_metrics_update_dispatcher.cc(165)] Invalid first_paint 0.195 s for first_image_paint 0.183 s
+8월 14, 2020 23:11:35.482 [8068:2064:0814/231135.482:ERROR:page_load_metrics_update_dispatcher.cc(165)] Invalid first_paint 0.195 s for first_image_paint 0.183 s
+8월 14, 2020 23:11:36.503 [8068:2064:0814/231136.502:ERROR:page_load_metrics_update_dispatcher.cc(165)] Invalid first_paint 0.195 s for first_image_paint 0.183 s
+8월 14, 2020 23:11:40.852 [8068:2064:0814/231140.851:ERROR:page_load_metrics_update_dispatcher.cc(165)] Invalid first_paint 0.195 s for first_image_paint 0.183 s
+8월 14, 2020 23:11:42.322 [8068:2064:0814/231142.322:ERROR:page_load_metrics_update_dispatcher.cc(165)] Invalid first_paint 0.195 s for first_image_paint 0.183 s
+8월 14, 2020 23:11:43.329 [8068:2064:0814/231143.328:ERROR:page_load_metrics_update_dispatcher.cc(165)] Invalid first_paint 0.195 s for first_image_paint 0.183 s
+8월 14, 2020 23:11:44.459 [8068:2064:0814/231144.459:ERROR:page_load_metrics_update_dispatcher.cc(165)] Invalid first_paint 0.195 s for first_image_paint 0.183 s
+8월 14, 2020 23:11:45.716 [8068:2064:0814/231145.716:ERROR:page_load_metrics_update_dispatcher.cc(165)] Invalid first_paint 0.195 s for first_image_paint 0.183 s
+
+8월 15, 2020 22:31:54.615 NEW SESSION
+8월 15, 2020 22:31:54.615 [13024:13156:0815/223154.613:ERROR:account_info_fetcher.cc(60)] OnGetTokenFailure: Invalid credentials (credentials rejected by client).
+8월 15, 2020 23:51:53.808 [13024:11868:0815/235153.807:ERROR:socket_stream.cc(219)] Closing stream with result -2
+8월 15, 2020 23:51:53.890 [13024:11868:0815/235153.890:ERROR:connection_factory_impl.cc(420)] Failed to connect to MCS endpoint with error -105
+8월 17, 2020 24:17:41.387 [13024:11868:0817/001741.387:ERROR:connection_factory_impl.cc(420)] Failed to connect to MCS endpoint with error -106
+8월 17, 2020 24:17:41.408 [13024:13156:0817/001741.396:ERROR:account_info_fetcher.cc(60)] OnGetTokenFailure: Invalid credentials (credentials rejected by client).
+
+8월 19, 2020 09:28:26.286 NEW SESSION
+8월 19, 2020 09:28:26.286 [4120:9852:0819/092826.284:ERROR:account_info_fetcher.cc(60)] OnGetTokenFailure: Invalid credentials (credentials rejected by client).
+
+8월 20, 2020 09:28:26.271 NEW SESSION
+8월 20, 2020 09:28:26.271 [11316:11436:0820/092826.271:ERROR:account_info_fetcher.cc(60)] OnGetTokenFailure: Invalid credentials (credentials rejected by client).

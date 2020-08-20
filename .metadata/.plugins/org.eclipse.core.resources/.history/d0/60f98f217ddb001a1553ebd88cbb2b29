@@ -1,0 +1,5 @@
+package com.woongjin.woongs.controller;
+
+public class CouponController {
+
+}

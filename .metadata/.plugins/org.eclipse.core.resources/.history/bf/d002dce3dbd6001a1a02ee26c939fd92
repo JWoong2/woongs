@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<!-- <bean id="helloController" class="spring.controller.HelloController" 
+		/> -->
+
+	<mvc:annotation-driven />
+
+	<context:annotation-config />
+	<context:component-scan
+		base-package="spring.*,movie.*,view.*" />
+
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/view/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<bean id="viewResolver1"
+		class="org.springframework.web.servlet.view.BeanNameViewResolver" />
+
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>messages.validation</value>
+				<value>message.label</value>
+				<value>message.validation</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	</bean>
+
+	<bean
+		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<prop key="java.lang.ArithmeticException">
+					error/mathException
+				</prop>
+				<prop key="java.lang.Exception">
+					error/exception
+				</prop>
+			</props>
+		</property>
+	</bean>
+
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/event/list.do" />
+			<bean class="spring.interceptor.EventExpirationCheckInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
+
+
+
+	<!-- <bean id="newArticleController" class="spring.controller.NewArticleController" 
+		p:articleService-ref="articleService" /> <bean id="articleService" class="spring.service.ArticleService" 
+		/> -->
+</beans>

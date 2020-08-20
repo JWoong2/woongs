@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="woongs">
+	<select id="tags" resultType="com.woongjin.woongs.model.TagDto">
+		select no, name from tag
+	</select>
+	
+	<select id="subtags" resultType="map" parameterType="int">
+		select * from sub_tag where tag_no = #{no}
+	</select>
+
+	<insert id="insertPost" parameterType="com.woongjin.woongs.model.PostDto">
+		insert into post(user_id, category_first, category_second, thumbnail, title, description, price, worktime, retouch_count, service_description, requirement) 
+		values(#{user_id}, #{category_first}, #{category_second}, #{thumbnail}, #{title}, #{description}, #{price}, #{worktime}, #{retouch_count}, #{service_description}, #{requirement})
+	</insert>
+	
+	<select id="selectPost" resultType="com.woongjin.woongs.model.PostDto">
+		select * from post
+	</select>
+	
+	
+	<delete id="delete" parameterType="com.woongjin.woongs.model.PostDto" >
+		delete from wishlist where post_no = #{post_no}
+	</delete>
+	
+</mapper>

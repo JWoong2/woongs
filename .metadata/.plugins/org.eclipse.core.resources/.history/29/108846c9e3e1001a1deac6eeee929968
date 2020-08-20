@@ -1,0 +1,39 @@
+ <%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+<script>
+function addornot(){
+  var click = $('#img'); //?
+  var post_no = $('#post_no', click).val();
+  var user_id = $('#user_id', click).val();
+  console.log("post_no, user_id : " + post_no +","+ user_id);
+  $.ajax({
+    url: "Url",
+    type: "GET",
+    cache: false,
+    dataType: "json",
+    data: 'post_no=' +post_no+ '& user_id=' +user_id,
+    success: function(data) {
+      if(wish on){
+     	alert("찜하기 취소");
+     	check--;
+      } else (whish off){
+    	alert("찜하기");
+       	check++;
+        }      
+      $('#check').html(data.check);
+    },
+    error: function(request, status, error){
+      alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+    }
+  });
+}
+</script>
+</body>
+</html> 

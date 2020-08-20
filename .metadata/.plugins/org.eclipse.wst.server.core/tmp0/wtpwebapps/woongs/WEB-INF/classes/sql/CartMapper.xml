@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="CartMapper">
+	<select id="show" resultType="com.woongjin.woongs.model.CartDto">
+		select * from wishlist
+	</select>
+
+	<insert id="insertCart"
+		parameterType="map">
+		insert into wishlist(user_id, post_no)
+		values(#{user_id}, #{post_no})
+	</insert>
+
+	<select id="wishList" parameterType="String" resultType="com.woongjin.woongs.model.PostDto">
+		select  p.no, p.user_id, p.category_first, p.category_second, p.thumbnail, p.title, p.description
+		,p.worktime, p.retouch_count, p.service_description, p.requirement
+		from wishlist w, post p where w.post_no = p.no and w.user_id = #{user_id};
+	</select>
+
+	<delete id="deleteCart" parameterType="map">
+		delete from wishlist where
+		post_no = #{report} and user_id = #{user_id}
+	</delete>
+	
+	<select id="checkNum" parameterType="com.woongjin.woongs.model.CartDto" resultType="int">
+		select check from wishlist where user_id = #{user_id} and post_no = #{post_no}
+	</select>
+
+	<insert id="check" parameterType="map">
+	insert into wishlist(user_id, post_no) values (#{user_id},#{post_no}) 
+	</insert>
+
+	<delete id="check_cancel" parameterType="map">
+	delete from wishlist WHERE user_id=#{user_id} AND post_no=#{post_no}
+	 </delete>
+</mapper>

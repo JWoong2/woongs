@@ -24,7 +24,7 @@ import com.google.gson.JsonObject;
 import com.woongjin.woongs.model.CartDto;
 import com.woongjin.woongs.model.PostDto;
 import com.woongjin.woongs.service.CartService;
-//카트 컨트롤러 입니다.
+
 @Controller
 public class CartController {
 
@@ -85,8 +85,10 @@ public class CartController {
 	public void checkNum() throws Exception {
 	}
 
+	
 	@RequestMapping(value = "/check", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
-	public int check(HttpServletRequest request, CartDto dto) throws Exception {
+	@ResponseBody
+	public String check(HttpServletRequest request, CartDto dto) throws Exception {
 		String user_id = (String) request.getSession().getAttribute("user_id");
 		Map<String, Object> paramMap = new HashMap();
 		
@@ -98,12 +100,13 @@ public class CartController {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		return 1;
+		return null;
 	}
 	
 
 	@RequestMapping(value = "/check_cancel", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
-	public int check_Cancel(HttpServletRequest request, CartDto dto) throws Exception {
+	 @ResponseBody 
+	public String check_Cancel(HttpServletRequest request, CartDto dto) throws Exception {
 		String user_id = (String) request.getSession().getAttribute("user_id");
 		Map<String, Object> paramMap = new HashMap();
 		
@@ -116,7 +119,7 @@ public class CartController {
 			e.printStackTrace();
 		}
 
-		return 1;
+		return null;
 	}
 
 	
