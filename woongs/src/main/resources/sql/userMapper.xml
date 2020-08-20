@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="userMapper">
+	<!-- 게시판 글 작성 -->
+	<insert id="register" parameterType="com.woongjin.woongs.model.UserDto">
+	    INSERT INTO user(email, password, user_name, reg_date) 
+	    VALUES(#{email}, #{password}, #{user_name}, #{reg_Date})
+    </insert>
+    
+    <select id="find" resultType="int" parameterType="com.woongjin.woongs.model.UserDto">
+	    select count(*) from user where email = #{email} and user_name = #{user_name}
+    </select>
+    
+    <select id="login" resultType="com.woongjin.woongs.model.UserDto" parameterType="com.woongjin.woongs.model.UserDto">
+	    select * from user where email = #{email} and password = #{password}
+    </select>
+    
+    <select id="selectWishList" parameterType="String" resultType="int">
+    	select post_no from wishlist where user_id = #{email}
+    </select>
+    
+    <insert id="sendCode" parameterType="map">
+	    INSERT INTO email_code(user_id, code)
+	    VALUES(#{user_id}, #{code} )
+    </insert>
+    
+    <select id="insertCode" parameterType="map" resultType="int">
+	    select count(*) from email_code where email_code.code=#{code} and email_code.user_id = #{user_id};
+    </select>
+    
+    <delete id="deleteCode" parameterType="map">
+    	delete from email_code where code=#{code} and user_id=#{user_id}
+    </delete>
+    
+    <update id="updatePassword" parameterType="map">
+    	update user set password=#{password} where email=#{user_id};
+    </update>
+</mapper>
