@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="profile">
+	<insert id="updateintro" parameterType="map">
+		update User u inner join
+		profile p on u.email = p.user_id
+		set u.nick_name = #{nick_name},
+		p.introduce = #{introduce},
+		u.image = #{image}
+		where u.email =
+		#{user_id}
+	</insert>
+
+	<select id="tags" resultType="com.woongjin.woongs.model.TagDto">
+		select no, name from tag
+	</select>
+	<select id="sub_tags"
+		resultType="com.woongjin.woongs.model.SubTagDto" parameterType="int">
+		select
+		* from sub_tag where tag_no=#{tag_no} order by no
+	</select>
+
+	<update id="updatetag"
+		parameterType="com.woongjin.woongs.model.ProfileDto">
+		update profile
+		set tag =
+		#{tag},sub_tag = #{sub_tag}
+		where
+		user_id= #{user_id}
+
+	</update>
+
+	<insert id="updateskill"
+		parameterType="com.woongjin.woongs.model.ProfileDto">
+		update profile
+		set skill = #{skill}
+		where user_id =
+		#{user_id}
+	</insert>
+
+	<select id="sub_tagOne"
+		resultType="com.woongjin.woongs.model.TagNameDto" parameterType="int">
+		select t.name as tagname,s.name as subname
+		from sub_tag s
+		inner join tag
+		t
+		on s.tag_no = t.no
+		where s.no = #{no};
+	</select>
+
+	<!-- 프로필 회사 -->
+	<update id="updatecareer"
+		parameterType="com.woongjin.woongs.model.CareerDto">
+		update career
+		set
+		company_name = #{company_name},
+		dept_name = #{dept_name},
+		position =
+		#{position},
+		year = #{year},
+		month =
+		#{month}
+		where user_id = #{user_id}
+	</update>
+
+	<!-- -->
+	<update id="univtags"
+		parameterType="com.woongjin.woongs.model.ProfileDto">
+		update profile
+		set
+		univ_name =
+		#{univ_name},
+		univ_major =
+		#{univ_major},
+		univ_status = #{univ_status}
+		where user_id = #{user_id}
+	</update>
+
+
+	<!-- 프로필 자격증 -->
+	<update id="updatecerti"
+		parameterType="com.woongjin.woongs.model.CertiDto">
+		update certification
+		set
+		issu_agency = #{issu_agency},
+		issu_date = #{issu_date},
+		certification_name = #{certification_name}
+		where user_id = #{user_id}
+	</update>
+
+	<select id="profileMain" parameterType="String" resultType="com.woongjin.woongs.model.ProfileMainDto">
+		<!-- select *, tag.name tagname , sub_tag.name sub_tagname
+		from career 
+        inner join certification
+        inner join profile
+		inner join tag 
+		inner join sub_tag
+		where
+		career.user_id = profile.user_id
+		and profile.user_id = certification.user_id
+		and profile.tag = tag.no
+		and profile.no = sub_tag.no
+		and profile.user_id = #{user_id}; -->
+		
+		select c.*, cert.*, p.*, t.name as tagname , st.name as sub_tagname
+		from career c 
+        inner join certification cert
+        inner join profile p 
+		inner join tag t
+		inner join sub_tag st
+		where
+		c.user_id = p.user_id
+		and p.user_id = cert.user_id
+		and p.tag = t.no
+		and p.sub_tag = st.no
+		and p.user_id = #{user_id}
+	</select>
+
+
+</mapper>   

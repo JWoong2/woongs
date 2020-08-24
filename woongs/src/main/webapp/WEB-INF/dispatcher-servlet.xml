@@ -109,4 +109,11 @@
 
 	<bean id="CartDao" class="com.woongjin.woongs.model.CartDao"
 		p:sqlSessionFactory-ref="sqlSessionFactory"></bean>
+			
+	<bean id="ProfileDao" class="com.woongjin.woongs.model.ProfileDao"
+		p:sqlSessionFactory-ref="sqlSessionFactory"></bean>
+
+<bean class="com.woongjin.woongs.model.ChatDao" id="ChatDao"
+		p:sqlSessionFactory-ref="sqlSessionFactory"/>
+		
 </beans>

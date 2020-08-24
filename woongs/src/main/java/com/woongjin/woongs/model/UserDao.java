@@ -1,6 +1,5 @@
 package com.woongjin.woongs.model;
 
-import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.support.SqlSessionDaoSupport;
@@ -37,8 +36,13 @@ public class UserDao extends SqlSessionDaoSupport{
 		getSqlSession().update("userMapper.updatePassword", map);		
 	}
 
-	public List<Integer> selectWishList(String email) {
+	public int getUserCount() {
 		// TODO Auto-generated method stub
-		return getSqlSession().selectList("userMapper.selectWishList", email);
+		return getSqlSession().selectOne("userMapper.userCount");
+	}
+
+	public UserDto getUserInfo(String user_id) {
+		// TODO Auto-generated method stub
+		return getSqlSession().selectOne("userMapper.getUserInfo", user_id);
 	}
 }
