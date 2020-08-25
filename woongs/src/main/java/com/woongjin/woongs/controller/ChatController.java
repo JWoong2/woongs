@@ -52,39 +52,53 @@ public class ChatController {
 		out.print(json.toJson(list));
 	}
 
-	// 상대방과의 채팅방 만들기 (문의하기)
-	@RequestMapping(value = "/chatAsk", method = RequestMethod.GET)
-	public String chatAsk(PostDto dto, HttpSession session) throws Exception {
-		// 처음은 의뢰인으로
-		// postDto로 post_no , 상대방의 user_id
-		// session 값으로 현재 로그인한 정보 가져올수 있음
-		String client_id = (String) session.getAttribute("user_id");
-		System.out.println("user_id ask쪽:  " + client_id);
+	   // 상대방과의 채팅방 만들기 (문의하기)
+	   @RequestMapping(value = "/chatAsk", method = RequestMethod.GET)
+	   public String chatAsk(PostDto dto, HttpSession session) throws Exception {
+	      // 처음은 의뢰인으로
+	      // postDto로 post_no , 상대방의 user_id
+	      // session 값으로 현재 로그인한 정보 가져올수 있음
+	      String client_id = (String) session.getAttribute("user_id");
+	      System.out.println("user_id ask쪽:  " + client_id);
 
-		Map<String, String> login = new HashMap<String, String>();
+	      Map<String, String> login = new HashMap<String, String>();
 
-		login.put("client_id", client_id); // glames2
-		System.out.println("aks client_id : " + client_id);
-		login.put("worker_id", dto.getUser_id()); // asd3582
-		login.put("user_id", client_id); // glames2
-		login.put("post_no", Integer.toString(dto.getNo())); // 29
-		UserDto userInfo = userDao.getUserInfo((String) session.getAttribute("user_id"));
-		UserDto partnerInfo = userDao.getUserInfo(dto.getUser_id()); // 상대방 뽀얀불이 맞고
+	      login.put("client_id", client_id); // glames2
+	      System.out.println("aks client_id : " + client_id);
+	      login.put("worker_id", dto.getUser_id()); // asd3582
+	      login.put("user_id", client_id); // glames2
+	      login.put("post_no", Integer.toString(dto.getNo())); // 29
+	      UserDto userInfo = userDao.getUserInfo((String) session.getAttribute("user_id"));
+	      UserDto partnerInfo = userDao.getUserInfo(dto.getUser_id()); // 상대방 뽀얀불이 맞고
 
-		ChatRoomVO room = new ChatRoomVO();
-		room.setClient_id(client_id);
-		room.setPost_no(dto.getNo());
-		room.setWorker_id(dto.getUser_id());
+	      ChatRoomVO room = new ChatRoomVO();
+	      room.setClient_id(client_id);
+	      room.setPost_no(dto.getNo());
+	      room.setWorker_id(dto.getUser_id());
 
-		ChatRoomVO roomInfo = chatDao.isRoom(room);
-		System.out.println(roomInfo.getChatroom_id());
-		session.setAttribute("roomInfo", roomInfo);
-		session.setAttribute("userInfo", userInfo);
-		session.setAttribute("partnerInfo", partnerInfo);
-		session.setAttribute("login", login);
+	      ChatRoomVO roomInfo = null;
 
-		return "chat/chat";
-	}
+	      if (!room.getClient_id().equals(room.getWorker_id())) {
+	         System.out.println("a");
+	         if (chatDao.isRoom(room) == null) {
+	            chatDao.createRoom(room);
+	            roomInfo = chatDao.isRoom(room);
+
+	         } else {
+	            roomInfo = chatDao.isRoom(room);
+	         }
+	      } else {
+	         roomInfo = chatDao.isRoom(room);
+	      }
+	      
+	      System.out.println(roomInfo.getChatroom_id());
+	      session.setAttribute("roomInfo", roomInfo);
+	      session.setAttribute("userInfo", userInfo);
+	      session.setAttribute("partnerInfo", partnerInfo);
+	      session.setAttribute("login", login);
+
+	      return "chat/chat";
+	   }
 
 	// 상대방과의 채팅방 만들기 (문의하기)
 	@RequestMapping(value = "/chatAnswer", method = RequestMethod.GET)
@@ -155,16 +169,21 @@ public class ChatController {
 		resp.setContentType("text/html;charset=utf-8");
 		PrintWriter out = resp.getWriter();
 		List<ChatRoomVO> chatRoomlist = chatDao.getRoomList2((String) session.getAttribute("user_id"));
-
 		List<MessageVO> list = new ArrayList<MessageVO>();
 
 		System.out.println("채팅방 개수 : " + chatRoomlist);
-		System.out.println("채팅방 개수 : " + chatRoomlist.size());
+
 		for (int i = 0; i < chatRoomlist.size(); i++) {
 			System.out.println(chatRoomlist.get(i));
 			MessageVO vo = chatDao.getRecentMessageWorker(chatRoomlist.get(i).getChatroom_id());
+			System.out.println(vo);
 			System.out.println("count :  " + chatDao.getUnReadCountWorker(chatRoomlist.get(i)));
-			vo.setUnReadCount(chatDao.getUnReadCountWorker(chatRoomlist.get(i)));
+			
+			if(chatDao.getUnReadCountWorker(chatRoomlist.get(i)) ==0 ) {
+				vo.setUnReadCount(0);
+			}else {
+				vo.setUnReadCount(chatDao.getUnReadCountWorker(chatRoomlist.get(i)));	
+			}
 
 			System.out.println(vo);
 

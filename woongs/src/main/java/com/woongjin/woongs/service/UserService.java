@@ -1,13 +1,11 @@
 package com.woongjin.woongs.service;
 
 import java.util.Date;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.woongjin.woongs.model.CartDto;
 import com.woongjin.woongs.model.UserDao;
 import com.woongjin.woongs.model.UserDto;
 
@@ -48,8 +46,8 @@ public class UserService {
 
 	}
 
-	public List<Integer> selectWishList(String email) {
+	public int getUserCount() {
 		// TODO Auto-generated method stub
-		return dao.selectWishList(email);
+		return dao.getUserCount();
 	}
 }

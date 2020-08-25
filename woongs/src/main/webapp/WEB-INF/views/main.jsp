@@ -36,10 +36,12 @@
 	if (user_id != null) {
 	%>
 	"${user_id}" 님 환영합니다
-	<a href="logout" class="logout">로그아웃</a>
+	<a href="logout" class="logout">로그아웃</a><a href="chatTest">채팅 테스트</a>
+	<a href="chatRoom">채팅목록</a>
 	<%} else {%>
 	<a href="register">회원가입</a>
 	<a href="login"> 로그인 </a>
+	
 	<%
 		}
 	%>
@@ -111,7 +113,7 @@
 															+ '"'
 															+ 'class'
 															+ '"'
-															+ "));'><img src='/resources/Images/emptyheart.png'></a></div>");
+															+ "));'><img src='/resources/Images/emptyheart.png'></a><a href='/chatAsk?user_id="+args[i].user_id+"&&no="+args[i].no+"'>문의하기</a></div>");
 
 								}
 							});
