@@ -41,4 +41,10 @@
     <update id="updatePassword" parameterType="map">
     	update user set password=#{password} where email=#{user_id};
     </update>
+    
+    <delete id="userDelete" parameterType="com.woongjin.woongs.model.UserDto">
+    	delete from user where email = #{email} and password = #{password} 
+    </delete>
+    
+    
 </mapper>

@@ -1,6 +1,7 @@
 package com.woongjin.woongs.service;
 
 import java.util.List;
+
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import com.woongjin.woongs.model.UserDto;
 
 @Service
 public class ProfileService {
+	
 	@Autowired
 	ProfileDao dao;
 
@@ -69,5 +71,12 @@ public class ProfileService {
 	public ProfileMainDto profileMain(String user_id) {
 		return dao.profileMain(user_id);
 	}
+
+	public ProfileMainDto selectprofile(String user_id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+
 
 }

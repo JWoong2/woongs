@@ -91,33 +91,51 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where user_id = #{user_id}
 	</update>
 
-	<select id="profileMain" parameterType="String" resultType="com.woongjin.woongs.model.ProfileMainDto">
-		<!-- select *, tag.name tagname , sub_tag.name sub_tagname
-		from career 
-        inner join certification
-        inner join profile
-		inner join tag 
-		inner join sub_tag
-		where
-		career.user_id = profile.user_id
-		and profile.user_id = certification.user_id
-		and profile.tag = tag.no
-		and profile.no = sub_tag.no
-		and profile.user_id = #{user_id}; -->
-		
+	<select id="profileMain" parameterType="String"
+		resultType="com.woongjin.woongs.model.ProfileMainDto">
+		<!-- select *, tag.name tagname , sub_tag.name sub_tagname from career 
+			inner join certification inner join profile inner join tag inner join sub_tag 
+			where career.user_id = profile.user_id and profile.user_id = certification.user_id 
+			and profile.tag = tag.no and profile.no = sub_tag.no and profile.user_id 
+			= #{user_id}; -->
+
 		select c.*, cert.*, p.*, t.name as tagname , st.name as sub_tagname
-		from career c 
-        inner join certification cert
-        inner join profile p 
+		from career c
+		inner join certification cert
+		inner join profile p
 		inner join tag t
 		inner join sub_tag st
 		where
 		c.user_id = p.user_id
-		and p.user_id = cert.user_id
+		and
+		p.user_id = cert.user_id
 		and p.tag = t.no
 		and p.sub_tag = st.no
-		and p.user_id = #{user_id}
+		and
+		p.user_id = #{user_id}
 	</select>
 
+	<select id="selectprofile" parameterType="String"
+		resultType="com.woongjin.woongs.model.ProfileMainDto">
+
+		select u.nick_name,c.*, cert.*, p.*, t.name as tagname , st.name as
+		sub_tagname
+		from career c
+		inner join certification cert
+		inner join profile p
+		inner join tag t
+		inner join sub_tag st
+		inner join user u
+		where
+		c.user_id = p.user_id
+		and
+		u.email = p.user_id
+		and
+		p.user_id = cert.user_id
+		and p.tag = t.no
+		and p.sub_tag = st.no
+		and
+		p.user_id = #{user_id}
+	</select>
 
 </mapper>   

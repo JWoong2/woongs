@@ -57,4 +57,26 @@ public class PostDao extends SqlSessionDaoSupport {
 		return getSqlSession().selectOne("woongs.selectRecentPostById", attribute);
 	}
 
+	
+	//
+	
+	public List<PostDto> selectPost(Map<String, Integer> map){
+		return getSqlSession().selectList("Tag.selectPost",map);
+	}
+	
+	public List<PostDto> tagSelectPost(int post){
+		return getSqlSession().selectList("Tag.tagSelectPost",post);
+	}
+	
+	public List<PostDto> checkPost(int post){
+		return getSqlSession().selectList("Tag.checkPost", post);
+	}
+	
+	public List<PostDto> orderPost() {
+		 return getSqlSession().selectList("Tag.orderPost");
+	}
+	
+	
+	
+	
 }

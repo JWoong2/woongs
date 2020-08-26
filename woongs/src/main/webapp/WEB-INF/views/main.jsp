@@ -28,24 +28,43 @@
 	right: 5px;
 	width: 20px;
 }
+ table {
+    width: 100%;
+    border-top: 1px solid #444444;
+    border-collapse: collapse;
+  }
+  th, td {
+    border-bottom: 1px solid #444444;
+    padding: 10px;
+  }
 </style>
 </head>
 <body>
+
+	<%-- <c:if test="${user_id == admin }"> --%>
+<%-- 	<c:if test="${user.verify == 2828 }">
+		<a href="../index">관리자</a>
+		</c:if> --%>
+	
+		
+
+
 	<%
 		String user_id = (String) session.getAttribute("user_id");
+	
 	if (user_id != null) {
 	%>
 	"${user_id}" 님 환영합니다
-	<a href="logout" class="logout">로그아웃</a><a href="chatTest">채팅 테스트</a>
+	<a href="logout" class="logout">로그아웃</a><a href="signout"> 회원탈퇴</a><a href="chatTest">채팅 테스트</a>
 	<a href="chatRoom">채팅목록</a>
 	<%} else {%>
 	<a href="register">회원가입</a>
 	<a href="login"> 로그인 </a>
-	
+
 	<%
 		}
 	%>
-	<a href="find">비밀번호 찾기</a>
+	<a href="find">비밀번호 찾기</a></td>
 	<a href="upload"> 업로드 페이지</a>
 	<a href="myPage"> 마이 페이지</a>
 	<a href="wishList"> 찜한목록</a>
@@ -157,5 +176,6 @@
 	<h2>카테고리 모음</h2>
 	<div id="tag"></div>
 	<div id="cate"></div>
+
 </body>
 </html>

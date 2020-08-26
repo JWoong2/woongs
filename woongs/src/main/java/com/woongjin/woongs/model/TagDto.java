@@ -1,8 +1,10 @@
 package com.woongjin.woongs.model;
 
 public class TagDto {
-	int no;
-	String name;
+	private int no;
+	private String name;
+	private int subno;
+	
 	
 	public int getNo() {
 		return no;
@@ -16,5 +18,13 @@ public class TagDto {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public int getSubno() {
+		return subno;
+	}
+	public void setSubno(int subno) {
+		this.subno = subno;
+	}
+	
+
 	
 }

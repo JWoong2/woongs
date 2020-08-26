@@ -19,6 +19,11 @@ public class UserDao extends SqlSessionDaoSupport{
 		return getSqlSession().selectOne("userMapper.login", vo);
 	}
 
+	public void userDelete(UserDto vo) throws Exception{
+		int i = getSqlSession().delete("userMapper.userDelete", vo);	
+		System.out.println("레코드 수"+i);
+	}
+	
 	public void sendCode(Map<String, String> map) {
 		getSqlSession().insert("userMapper.sendCode", map);
 		
@@ -36,6 +41,7 @@ public class UserDao extends SqlSessionDaoSupport{
 		getSqlSession().update("userMapper.updatePassword", map);		
 	}
 
+	
 	public int getUserCount() {
 		// TODO Auto-generated method stub
 		return getSqlSession().selectOne("userMapper.userCount");
@@ -45,4 +51,6 @@ public class UserDao extends SqlSessionDaoSupport{
 		// TODO Auto-generated method stub
 		return getSqlSession().selectOne("userMapper.getUserInfo", user_id);
 	}
+	
+	
 }

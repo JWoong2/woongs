@@ -1,19 +1,19 @@
 package com.woongjin.woongs.model;
 
 public class PostDto {
-	int no;
-	String user_id;
-	int category_first;
-	int category_second;
-	String thumbnail;
-	String title;
-	String description;
-	int price;
-	int worktime;
-	int retouch_count;
-	String service_description;
-	String requirement;
-	int status;
+	private int no;
+	private String user_id;
+	private 	int category_first;
+	private int category_second;
+	private String thumbnail;
+	private String title;
+	private String description;
+	private int price;
+	private int worktime;
+	private int retouch_count;
+	private String service_description;
+	private String requirement;
+	private int status;
 
 	@Override
 	public String toString() {

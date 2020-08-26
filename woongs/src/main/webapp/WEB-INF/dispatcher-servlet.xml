@@ -139,5 +139,8 @@
 
 <bean class="com.woongjin.woongs.model.ChatDao" id="ChatDao"
 		p:sqlSessionFactory-ref="sqlSessionFactory"/>
+	
+	<bean id="TCDao" class="com.woongjin.woongs.model.TCDao"
+		p:sqlSessionFactory-ref="sqlSessionFactory"></bean>
 		
 </beans>

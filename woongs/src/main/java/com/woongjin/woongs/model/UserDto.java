@@ -5,6 +5,7 @@ import java.util.Date;
 public class UserDto {
 	private int no;
 	private String email;
+	private String user_id;
 	private String password;
 	private String user_name;
 	private String nick_name;
@@ -19,6 +20,15 @@ public class UserDto {
 	private char status;
 	private int isAdmin;
 	
+	
+	
+	
+	public String getUser_id() {
+		return user_id;
+	}
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
 	public int getNo() {
 		return no;
 	}
@@ -110,5 +120,14 @@ public class UserDto {
 	public void setIsAdmin(int isAdmin) {
 		this.isAdmin = isAdmin;
 	}
+	@Override
+	public String toString() {
+		return "UserDto [no=" + no + ", email=" + email + ", password=" + password + ", user_name=" + user_name
+				+ ", nick_name=" + nick_name + ", reg_Date=" + reg_Date + ", birth=" + birth + ", gender=" + gender
+				+ ", image=" + image + ", favoriate=" + favoriate + ", cash=" + cash + ", point=" + point + ", date="
+				+ date + ", status=" + status + ", isAdmin=" + isAdmin + "]";
+	}
+	
+	
 	
 }

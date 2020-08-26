@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tc">
+
+	<select id="list" resultType="com.woongjin.woongs.model.TCDto" parameterType="map">
+		select * from admin_tc 
+		where no > 0 order by no desc, reg_date desc
+	</select>
+
+	<insert id="insert" parameterType="com.woongjin.woongs.model.TCDto">
+		insert into
+		admin_tc(writer,subject,reg_date,content)
+		values(#{writer},#{subject},#{reg_date},#{content})
+	</insert>
+	
+	<update id="update" parameterType="com.woongjin.woongs.model.TCDto">
+		update admin_tc set
+		writer=#{writer},
+		subject=#{subject},
+		content=#{content}
+		where no=#{no}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete from admin_tc where no=#{no}
+	</delete>
+	
+	<select id="count" resultType="int">
+		select count(*) from admin_tc
+	</select>
+	
+		<select id="max" resultType="int">
+		select max(no) from admin_tc
+	</select>
+	
+	<select id="one" resultType="com.woongjin.woongs.model.TCDto"
+		parameterType="int">
+		select * from admin_tc where no = #{no}
+	</select>
+	
+</mapper>

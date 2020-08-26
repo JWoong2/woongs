@@ -55,4 +55,9 @@ public class ProfileDao extends SqlSessionDaoSupport {
 
 	}
 
+	/*
+	 * public ProfileMainDto selectOne(String string, String user_id) { // TODO
+	 * Auto-generated method stub return null; }
+	 */
+
 }

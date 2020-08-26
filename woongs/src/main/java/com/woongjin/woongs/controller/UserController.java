@@ -18,7 +18,9 @@ import com.woongjin.woongs.service.UserService;
 
 import randomWord.RandomWord;
 
+import com.mysql.cj.Session;
 import com.woongjin.woongs.model.EmailDto;
+import com.woongjin.woongs.model.UserDao;
 import com.woongjin.woongs.model.UserDto;
 
 @Controller
@@ -123,6 +125,7 @@ public class UserController {
 
 			if (vo.getIsAdmin() == 1) {
 				request.getSession().setAttribute("admin", true);
+				return "../index";
 			} else {
 				request.getSession().setAttribute("admin", false);
 			}
@@ -154,7 +157,6 @@ public class UserController {
 	}
 
 	// 코드입력 post
-
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String postUpdate(HttpServletRequest request, String password) throws Exception {
 		String user_id = (String) request.getSession().getAttribute("user_id");
@@ -162,13 +164,9 @@ public class UserController {
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("user_id", user_id);
 		map.put("password", password);
-
 		System.out.println("들어옴" + user_id);
-
 		service.updateCode(map);
-
 		System.out.println(password);
-
 		return "member/updateDone";
 	}
 	
@@ -177,5 +175,29 @@ public class UserController {
         session.invalidate();
         return "main";
     }
+	// 탈퇴페이지 이동 get
+	@RequestMapping(value = "/userDelete", method = RequestMethod.GET)
+	public String userDelete() throws Exception {
+		return "member/signout";
+	}
+	
+	@RequestMapping(value="/userDelete", method = RequestMethod.POST)
+	public String userDelete(HttpSession session,HttpServletRequest request, UserDto vo, String password) throws Exception {
+		System.out.println("pass"+vo.getEmail());
+		System.out.println(vo.toString());
+		System.out.println("pass"+vo.getPassword());
+		
+		String pass = vo.getPassword();
+		String passwordchk = request.getParameter("password");
+		if(!(pass.equals(passwordchk))) {
+			System.out.println("비밀번호가 틀립니다");
+			return "member/signout";
+		}
+			service.userDelete(vo);
+			session.invalidate();
+			return "main";
+		
+		}
+	
 	
 }

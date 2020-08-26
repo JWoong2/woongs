@@ -12,9 +12,9 @@ $(document).ready(function(){
 	$('#test').submit(function(){
 		var code = $("#code").val();
 		if(code == '${code}'){
-			alert('인증됨 ㅋ')
+			alert('인증됐습니다')
 		}else{
-			alert('틀림 ㅋ')
+			alert('틀렸습니다')
 			return false;
 		}
 	})

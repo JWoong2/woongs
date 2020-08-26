@@ -20,9 +20,9 @@
 <body>
 	<a href="main">메인</a><br><br>
 	<%
-		ProfileMainDto dto = (ProfileMainDto) session.getAttribute("user_profile");
-	if (dto.getIntroduce() == null) {
-		
+	ProfileMainDto dto = (ProfileMainDto) session.getAttribute("user_profile");
+	if (dto == null) {
+		//out.print("왜 안돼 시발");
 	} else {
 	%>
 

@@ -1,176 +1,185 @@
 package com.woongjin.woongs.model;
 
 public class ProfileMainDto {
-	String user_id;
-	String introduce;
-	int tag;
-	int sub_tag;
-	private String tagname;
-	private String sub_tagname;
-	String skill;
-	String univ_name;
-	String univ_major;
-	int univ_status;
-	int no;
-	int year;
-	int month;
-	String company_name;
-	String dept_name;
-	String position;
-	String issu_date;
-	String issu_agency;
-	String certification_name;
+   String nick_name;
+   String user_id;
+   String introduce;
+   int tag;
+   int sub_tag;
+   private String tagname;
+   private String sub_tagname;
+   String skill;
+   String univ_name;
+   String univ_major;
+   int univ_status;
+   int no;
+   int year;
+   int month;
+   String company_name;
+   String dept_name;
+   String position;
+   String issu_date;
+   String issu_agency;
+   String certification_name;
 
-	public String getTagname() {
-		return tagname;
-	}
+   public String getNick_name() {
+      return nick_name;
+   }
 
-	public void setTagname(String tagname) {
-		this.tagname = tagname;
-	}
+   public void setNick_name(String nick_name) {
+      this.nick_name = nick_name;
+   }
 
-	public String getSub_tagname() {
-		return sub_tagname;
-	}
+   public String getTagname() {
+      return tagname;
+   }
 
-	public void setSub_tagname(String sub_tagname) {
-		this.sub_tagname = sub_tagname;
-	}
+   public void setTagname(String tagname) {
+      this.tagname = tagname;
+   }
 
-	public int getNo() {
-		return no;
-	}
+   public String getSub_tagname() {
+      return sub_tagname;
+   }
 
-	public void setNo(int no) {
-		this.no = no;
-	}
+   public void setSub_tagname(String sub_tagname) {
+      this.sub_tagname = sub_tagname;
+   }
 
-	public int getYear() {
-		return year;
-	}
+   public int getNo() {
+      return no;
+   }
 
-	public void setYear(int year) {
-		this.year = year;
-	}
+   public void setNo(int no) {
+      this.no = no;
+   }
 
-	public int getMonth() {
-		return month;
-	}
+   public int getYear() {
+      return year;
+   }
 
-	public void setMonth(int month) {
-		this.month = month;
-	}
+   public void setYear(int year) {
+      this.year = year;
+   }
 
-	public String getCompany_name() {
-		return company_name;
-	}
+   public int getMonth() {
+      return month;
+   }
 
-	public void setCompany_name(String company_name) {
-		this.company_name = company_name;
-	}
+   public void setMonth(int month) {
+      this.month = month;
+   }
 
-	public String getDept_name() {
-		return dept_name;
-	}
+   public String getCompany_name() {
+      return company_name;
+   }
 
-	public void setDept_name(String dept_name) {
-		this.dept_name = dept_name;
-	}
+   public void setCompany_name(String company_name) {
+      this.company_name = company_name;
+   }
 
-	public String getPosition() {
-		return position;
-	}
+   public String getDept_name() {
+      return dept_name;
+   }
 
-	public void setPosition(String position) {
-		this.position = position;
-	}
+   public void setDept_name(String dept_name) {
+      this.dept_name = dept_name;
+   }
 
-	public String getIssu_date() {
-		return issu_date;
-	}
+   public String getPosition() {
+      return position;
+   }
 
-	public void setIssu_date(String issu_date) {
-		this.issu_date = issu_date;
-	}
+   public void setPosition(String position) {
+      this.position = position;
+   }
 
-	public String getIssu_agency() {
-		return issu_agency;
-	}
+   public String getIssu_date() {
+      return issu_date;
+   }
 
-	public void setIssu_agency(String issu_agency) {
-		this.issu_agency = issu_agency;
-	}
+   public void setIssu_date(String issu_date) {
+      this.issu_date = issu_date;
+   }
 
-	public String getCertification_name() {
-		return certification_name;
-	}
+   public String getIssu_agency() {
+      return issu_agency;
+   }
 
-	public void setCertification_name(String certification_name) {
-		this.certification_name = certification_name;
-	}
+   public void setIssu_agency(String issu_agency) {
+      this.issu_agency = issu_agency;
+   }
 
-	public String getUser_id() {
-		return user_id;
-	}
+   public String getCertification_name() {
+      return certification_name;
+   }
 
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
-	}
+   public void setCertification_name(String certification_name) {
+      this.certification_name = certification_name;
+   }
 
-	public String getIntroduce() {
-		return introduce;
-	}
+   public String getUser_id() {
+      return user_id;
+   }
 
-	public void setIntroduce(String introduce) {
-		this.introduce = introduce;
-	}
+   public void setUser_id(String user_id) {
+      this.user_id = user_id;
+   }
 
-	public int getTag() {
-		return tag;
-	}
+   public String getIntroduce() {
+      return introduce;
+   }
 
-	public void setTag(int tag) {
-		this.tag = tag;
-	}
+   public void setIntroduce(String introduce) {
+      this.introduce = introduce;
+   }
 
-	public int getSub_tag() {
-		return sub_tag;
-	}
+   public int getTag() {
+      return tag;
+   }
 
-	public void setSub_tag(int sub_tag) {
-		this.sub_tag = sub_tag;
-	}
+   public void setTag(int tag) {
+      this.tag = tag;
+   }
 
-	public String getSkill() {
-		return skill;
-	}
+   public int getSub_tag() {
+      return sub_tag;
+   }
 
-	public void setSkill(String skill) {
-		this.skill = skill;
-	}
+   public void setSub_tag(int sub_tag) {
+      this.sub_tag = sub_tag;
+   }
 
-	public String getUniv_name() {
-		return univ_name;
-	}
+   public String getSkill() {
+      return skill;
+   }
 
-	public void setUniv_name(String univ_name) {
-		this.univ_name = univ_name;
-	}
+   public void setSkill(String skill) {
+      this.skill = skill;
+   }
 
-	public String getUniv_major() {
-		return univ_major;
-	}
+   public String getUniv_name() {
+      return univ_name;
+   }
 
-	public void setUniv_major(String univ_major) {
-		this.univ_major = univ_major;
-	}
+   public void setUniv_name(String univ_name) {
+      this.univ_name = univ_name;
+   }
 
-	public int getUniv_status() {
-		return univ_status;
-	}
+   public String getUniv_major() {
+      return univ_major;
+   }
 
-	public void setUniv_status(int univ_status) {
-		this.univ_status = univ_status;
-	}
+   public void setUniv_major(String univ_major) {
+      this.univ_major = univ_major;
+   }
+
+   public int getUniv_status() {
+      return univ_status;
+   }
+
+   public void setUniv_status(int univ_status) {
+      this.univ_status = univ_status;
+   }
 
 }

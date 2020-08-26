@@ -1,10 +1,9 @@
 package com.woongjin.woongs.controller;
 
 import java.io.File;
+
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -58,43 +57,48 @@ public class ProfileController {
 
 	}
 
-	@RequestMapping("/intro")
-	public String pulsIntro(String nick_name, String introduce, MultipartFile report, HttpServletRequest request) {
-		Map<String, String> map = new HashMap<String, String>();
+	   @RequestMapping("/intro")
+	   public String pulsIntro(String nick_name, String introduce, MultipartFile report, HttpServletRequest request,Model m) {
+	      Map<String, String> map = new HashMap<String, String>();
 
-		// 이미지 경로 저장위치에 따라 바꿔야함
-		String path = "C:\\Users\\82102\\Documents\\workspace-spring-tool-suite-4-4.7.0.RELEASE\\profile\\src\\main\\webapp\\resources\\Images";
-		String alterpath = "resources\\Images\\";
+	      // 이미지 경로 저장위치에 따라 바꿔야함
+	      String path = "C:\\Users\\gusql\\Documents\\workspace-spring-tool-suite-4-4.7.0.RELEASE\\profile\\src\\main\\webapp\\resources\\Images";
+	      String alterpath = "resources\\Images\\";
 
-		File file = new File(path);
+	      File file = new File(path);
 
-		if (!file.exists()) {
-			file.mkdirs();
-		}
+	      if (!file.exists()) {
+	         file.mkdirs();
+	      }
 
-		path += "\\" + report.getOriginalFilename();
-		alterpath += report.getOriginalFilename();
+	      path += "\\" + report.getOriginalFilename();
+	      alterpath += report.getOriginalFilename();
 
-		file = new File(path);
+	      file = new File(path);
 
-		try {
-			report.transferTo(file);
-		} catch (IllegalStateException | IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		String user_id = (String) request.getSession().getAttribute("user_id");
-		// String user_id = "jun"; 테스트용
+	      try {
+	         report.transferTo(file);
+	      } catch (IllegalStateException | IOException e) {
+	         // TODO Auto-generated catch block
+	         e.printStackTrace();
+	      }
+	      String user_id = (String) request.getSession().getAttribute("user_id");
+	      // String user_id = "jun"; 테스트용
 
-		map.put("nick_name", nick_name);
-		map.put("introduce", introduce);
-		map.put("image", alterpath);
-		map.put("user_id", user_id);
+	      map.put("nick_name", nick_name);
+	      map.put("introduce", introduce);
+	      map.put("image", alterpath);
+	      map.put("user_id", user_id);
 
-		profile.updateintro(map);
+	      profile.updateintro(map);
+	      
+	      
+	      ProfileMainDto dto1 =  profile.selectprofile(user_id);
+	      System.out.println(dto1.getIntroduce());
+	      m.addAttribute("dto1",dto1);
 
-		return "specialForm";
-	}
+	      return "specialForm";
+	   }
 
 	// 상위 카톄고리
 	@RequestMapping(value = "/tags", method = RequestMethod.POST)
