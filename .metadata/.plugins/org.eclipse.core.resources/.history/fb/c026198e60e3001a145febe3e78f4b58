@@ -1,0 +1,63 @@
+package com.woongjin.woongs.controller;
+
+import java.util.*;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+import com.lowagie.text.pdf.events.IndexEvents.Entry;
+import com.woongjin.woongs.model.BalanceDto;
+import com.woongjin.woongs.model.T_Paid_HistoryDto;
+import com.woongjin.woongs.service.Income3Service;
+
+@Controller
+public class Income3Controller {
+
+	@Autowired
+	Income3Service income3Service;
+
+	@RequestMapping(value = "/income3", method = RequestMethod.GET)
+	public ModelAndView manageIncome3(HttpSession session) {
+
+		ModelAndView mav = new ModelAndView();
+		// String price = (String)session.setAttribute("price", price);
+		String user_id = (String) session.getAttribute("user_id");
+
+		System.out.println(user_id);
+		
+		List<T_Paid_HistoryDto> findIncomeById = income3Service.findIncomeById(user_id);
+		List<BalanceDto> findMoneyById = income3Service.findMoneyById(user_id);
+
+		System.out.println("findIncomeById size : " + findIncomeById.size());
+		System.out.println("findMoneyById size : " + findMoneyById.size());
+
+		
+		mav.addObject("findIncomeById", findIncomeById); // T_PAID_HISTORY
+		mav.addObject("findMoneyById", findMoneyById); // balance
+		mav.setViewName("manageIncome3");
+
+		return mav;
+	}
+
+	@RequestMapping(value = "/findIncomeByUserId3", method = RequestMethod.GET)
+	@ResponseBody
+	public List<T_Paid_HistoryDto> findIncomeByUserId3(HttpServletRequest request) {
+		String user_id = (String) request.getSession().getAttribute("user_id");
+		return income3Service.findIncomeById(user_id);
+	}
+	
+	@RequestMapping(value = "/money1", method = RequestMethod.GET)
+	@ResponseBody
+	public List<BalanceDto> money1(HttpServletRequest request) {
+		String user_id = (String) request.getSession().getAttribute("user_id");
+		System.out.println();
+		
+		return income3Service.findMoneyById(user_id);
+	}
+}

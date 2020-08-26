@@ -1,0 +1,12 @@
+package com.woongjin.woongs.model;
+
+import java.util.List;
+import java.util.Map;
+
+import org.mybatis.spring.support.SqlSessionDaoSupport;
+
+public class ManagerDao extends SqlSessionDaoSupport {
+	public List<T_Paid_HistoryDto> managerIncome(String user_id) {
+		return getSqlSession().selectList("manager.managerIncome", user_Id);
+	}
+}

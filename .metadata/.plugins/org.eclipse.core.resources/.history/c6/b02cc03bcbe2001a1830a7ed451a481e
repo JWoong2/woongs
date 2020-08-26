@@ -1,0 +1,12 @@
+package com.woongjin.woongs.model;
+
+public class T_Paid_HistoryDto {
+	private int no;
+	private String user_Id;
+	private String paid_user_id;
+	private String paid_date;
+	private int price;
+	private int product_no;
+	private int finsh_yn;
+	
+}

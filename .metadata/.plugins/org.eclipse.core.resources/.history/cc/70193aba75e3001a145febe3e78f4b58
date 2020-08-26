@@ -1,0 +1,21 @@
+package com.woongjin.woongs.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.woongjin.woongs.model.ManagerDao;
+import com.woongjin.woongs.model.T_Paid_HistoryDto;
+
+@Service
+public class ManagerService {
+	
+	@Autowired
+	ManagerDao dao;
+	public T_Paid_HistoryDto managerIncome(String user_id) {
+		
+		return dao.managerIncome(user_id);
+	}
+
+}

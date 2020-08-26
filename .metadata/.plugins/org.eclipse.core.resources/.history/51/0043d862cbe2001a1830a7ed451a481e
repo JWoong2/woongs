@@ -1,0 +1,39 @@
+package com.woongjin.woongs.model;
+
+public class BalanceDto {
+	private int no;
+	private String user_balance;
+	private String user_expected_balance;
+	private String user_withdrawn_balance;
+	private String user_total_monthly_balance;
+	public int getNo() {
+		return no;
+	}
+	public void setNo(int no) {
+		this.no = no;
+	}
+	public String getUser_balance() {
+		return user_balance;
+	}
+	public void setUser_balance(String user_balance) {
+		this.user_balance = user_balance;
+	}
+	public String getUser_expected_balance() {
+		return user_expected_balance;
+	}
+	public void setUser_expected_balance(String user_expected_balance) {
+		this.user_expected_balance = user_expected_balance;
+	}
+	public String getUser_withdrawn_balance() {
+		return user_withdrawn_balance;
+	}
+	public void setUser_withdrawn_balance(String user_withdrawn_balance) {
+		this.user_withdrawn_balance = user_withdrawn_balance;
+	}
+	public String getUser_total_monthly_balance() {
+		return user_total_monthly_balance;
+	}
+	public void setUser_total_monthly_balance(String user_total_monthly_balance) {
+		this.user_total_monthly_balance = user_total_monthly_balance;
+	}
+}

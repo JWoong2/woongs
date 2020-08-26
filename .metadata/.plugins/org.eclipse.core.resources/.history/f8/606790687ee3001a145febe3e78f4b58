@@ -1,0 +1,64 @@
+package com.woongjin.woongs.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.woongjin.woongs.model.T_Paid_HistoryDto;
+import com.woongjin.woongs.service.ManagerService;
+
+@Controller
+public class ManagerController {
+
+	@Autowired
+	ManagerService ManagerService;
+
+	@RequestMapping(value = "/manager", method = RequestMethod.GET)
+	public String manager(HttpSession session, Model m) {
+
+		String user_id = (String) session.getAttribute("user_id");
+
+		List<T_Paid_HistoryDto> dto = ManagerService.managerIncome(user_id);
+		System.out.println(dto.size());
+
+		List<T_Paid_HistoryDto> monthSumDto = new ArrayList<T_Paid_HistoryDto>();
+
+		List<String> tagList = new ArrayList<String>();
+
+		for (T_Paid_HistoryDto t : dto) {
+			if (tagList.contains(t.getTag_name())) {
+				continue;
+			} else {
+				tagList.add(t.getTag_name());
+			}
+		}
+
+		for (T_Paid_HistoryDto t : dto) {
+
+			if (monthSumDto.size() == 0) {
+				monthSumDto.add(t);
+			} else {
+				for (T_Paid_HistoryDto month : monthSumDto) {
+					if (month.getMonth() == t.getMonth() && t.getProduct_no() == month.getProduct_no()) {
+						t.setPrice(t.getPrice() + month.getPrice());
+					} else {
+						monthSumDto.add(t);
+					}
+				}
+			}
+		}
+
+		m.addAttribute("dto", dto);
+		m.addAttribute("monthSumDto", monthSumDto);
+
+		return "manager";
+	}
+}

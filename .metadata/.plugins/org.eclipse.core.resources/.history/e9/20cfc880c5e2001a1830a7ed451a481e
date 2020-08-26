@@ -1,0 +1,27 @@
+package com.woongjin.woongs.service;
+
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.woongjin.woongs.model.Income3Dao;
+
+@Service
+public class Income3Service {
+
+		@Autowired
+		Income3Dao dao;
+		
+		public Map<String, Object> findIncomeById3(String user_id) {
+			// TODO Auto-generated method stub
+			return dao.findIncomeById3(user_id);
+		}
+		
+		public Map<String, Object> money1(String user_id) {
+			// TODO Auto-generated method stub
+			return dao.money1(user_id);
+		}
+
+}

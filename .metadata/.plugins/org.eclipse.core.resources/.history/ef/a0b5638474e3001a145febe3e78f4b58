@@ -1,0 +1,18 @@
+package com.woongjin.woongs.model;
+
+import java.util.List;
+import java.util.Map;
+
+import org.mybatis.spring.support.SqlSessionDaoSupport;
+
+public class ManagerDao extends SqlSessionDaoSupport {
+	public List<T_Paid_HistoryDto> findIncomeById3(String user_id) {
+		// TODO Auto-generated method stub
+		return getSqlSession().selectList("income3.findIncomeById3", user_id);
+	}
+
+	public List<BalanceDto> findMoneyById(String user_id) {
+		// TODO Auto-generated method stub
+		return getSqlSession().selectList("income3.money1", user_id);
+	}
+}

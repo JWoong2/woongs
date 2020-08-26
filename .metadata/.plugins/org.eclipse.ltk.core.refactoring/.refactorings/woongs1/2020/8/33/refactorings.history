@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;IncomeMapper.xml&apos; to &apos;woongs/src/main/resources/sql&apos;&#x0D;&#x0A;- Original project: &apos;woongs&apos;&#x0D;&#x0A;- Destination element: &apos;woongs/src/main/resources/sql&apos;&#x0D;&#x0A;- Original element: &apos;IncomeMapper.xml&apos;" description="Copy file" destination="/src\/main\/resources&lt;sql" element1="src/main/resources/sql/IncomeMapper.xml" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1597149280789" units="0" version="1.0"/>
+</session>

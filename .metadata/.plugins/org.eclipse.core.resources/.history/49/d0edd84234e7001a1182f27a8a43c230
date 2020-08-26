@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="manager">
+	<select id="managerIncome" parameterType="String" resultType="com.woongjin.woongs.model.T_Paid_HistoryDto">
+	select t1.name as tag_name ,PRODUCT_NO,PRICE, month(PAID_DATE) as month 
+	FROM tag t1, t_paid_history t2 
+	WHERE t1.no = t2.product_no and USER_ID = #{user_id};	
+	</select>
+	<!-- <select id="managerIncome" parameterType="String" resultType="com.woongjin.woongs.model.T_Paid_HistoryDto">
+		SELECT * 
+		FROM T_PAID_HISTORY
+		WHERE USER_ID = #{USER_ID} 
+	</select> -->
+	
+</mapper>

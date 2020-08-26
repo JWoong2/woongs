@@ -1,0 +1,5 @@
+package com.woongjin.woongs.model;
+
+public class T_Paid_HistoryDto {
+
+}
