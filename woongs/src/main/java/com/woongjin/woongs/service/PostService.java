@@ -55,5 +55,25 @@ public class PostService {
 		return dao.getPostsBySubTag(dto);
 	}
 
+	public List<PostDto> getPostsById(String user_id) {
+		// TODO Auto-generated method stub
+		return dao.getPostsById(user_id);
+	}
+
+	public void updatePost(PostDto dto) {
+		// TODO Auto-generated method stub
+		dao.updatePost(dto);
+	}
+
+	public PostDto getRecentPostById(String attribute) {
+		// TODO Auto-generated method stub
+		return dao.getRecentPostById(attribute);
+	}
+
+	public int getPostImageByPostNo(int no) {
+		// TODO Auto-generated method stub
+		return dao.getPostImageByPostNo(no);
+	}
+
 	
 }

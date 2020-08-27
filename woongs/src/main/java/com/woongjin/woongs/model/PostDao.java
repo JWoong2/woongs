@@ -32,6 +32,11 @@ public class PostDao extends SqlSessionDaoSupport {
 		return getSqlSession().selectOne("woongs.selectPostByNo", no);
 	}
 
+	public List<PostDto> getPostsById(String user_id) {
+		// TODO Auto-generated method stub
+		return getSqlSession().selectList("woongs.getPostsById", user_id);
+	}
+
 	public List<PostDto> getPostsByTag(int no) {
 		// TODO Auto-generated method stub
 		return getSqlSession().selectList("woongs.getPostsByTag", no);
@@ -40,11 +45,6 @@ public class PostDao extends SqlSessionDaoSupport {
 	public List<PostDto> getPostsBySubTag(SubTagDto dto) {
 		// TODO Auto-generated method stub
 		return getSqlSession().selectList("woongs.getPostsBySubTag", dto);
-	}
-
-	public List<PostDto> getPostsById(String user_id) {
-		// TODO Auto-generated method stub
-		return getSqlSession().selectList("woongs.getPostsById", user_id);
 	}
 
 	public void updatePost(PostDto dto) {
@@ -57,26 +57,29 @@ public class PostDao extends SqlSessionDaoSupport {
 		return getSqlSession().selectOne("woongs.selectRecentPostById", attribute);
 	}
 
-	
-	//
-	
-	public List<PostDto> selectPost(Map<String, Integer> map){
+	public int getPostImageByPostNo(int no) {
+		// TODO Auto-generated method stub
+		return getSqlSession().selectOne("woongs.getPostImageByPostNo",no);
+	}
+
+	public List<PostDto> selectPost(Map<String, Integer> map) {
+		// TODO Auto-generated method stub
 		return getSqlSession().selectList("Tag.selectPost",map);
 	}
-	
-	public List<PostDto> tagSelectPost(int post){
+
+	public List<PostDto> tagSelectPost(int post) {
+		// TODO Auto-generated method stub
 		return getSqlSession().selectList("Tag.tagSelectPost",post);
 	}
-	
-	public List<PostDto> checkPost(int post){
+
+	public List<PostDto> checkPost(int post) {
+		// TODO Auto-generated method stub
 		return getSqlSession().selectList("Tag.checkPost", post);
 	}
-	
+
 	public List<PostDto> orderPost() {
+		// TODO Auto-generated method stub
 		 return getSqlSession().selectList("Tag.orderPost");
 	}
-	
-	
-	
-	
+
 }

@@ -32,10 +32,12 @@ $(function(){
 });//ready ³¡
 
 function subTagView() {
-	var tagno=<%= dto.get(0).getCategory_first() %>;
+	var tag_no=<%= dto.get(0).getCategory_first() %>;
 	
 	var url="subtag";
-	var params="tagno="+tagno;
+	var params="tag_no="+tag_no;
+
+	console.log(tag_no);
 	
 	$.ajax({
 		type:"post"
@@ -43,8 +45,8 @@ function subTagView() {
 		,data:params
 		,dataType:"json"})
 		.done(function(args){
-			 for(var idx=0; idx<args.length; idx++) {	
-				 $("#sub_tag").append("<a href='subcategory?no="+args[i].no+"&&tagno="+ args[i].tag_no+"'>"+args[idx].name+"</a>");	
+			 for(var i=0; i<args.length; i++) {	
+				 $("#sub_tag").append("<a href='subcategory?no="+args[i].no+"&&tag_no="+ args[i].tag_no+"'>"+args[i].name+"</a>");	
 			 } 
 		})
 	    .fail(function(e) {

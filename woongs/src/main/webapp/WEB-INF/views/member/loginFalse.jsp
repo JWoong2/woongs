@@ -9,7 +9,7 @@
 <script>
 	$(document).ready(function(){
 		alert('계정정보가 일치하지 않습니다.')		
-		history.go(-1);
+		return "login";
 	})
 </script>
 </head>

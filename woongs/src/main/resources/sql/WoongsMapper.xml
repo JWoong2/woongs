@@ -20,12 +20,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values(#{user_id}, #{category_first}, #{category_second}, #{thumbnail}, #{title}, #{description}, #{price}, #{worktime}, #{retouch_count}, #{service_description}, #{requirement})
 	</insert>
 	
+	<update id="updatePost" parameterType="com.woongjin.woongs.model.PostDto">
+		update post 
+		set category_first = #{category_first}, category_second=#{category_second}, thumbnail=#{thumbnail}, title =#{title}, description = #{description}, price=#{price}, worktime=#{worktime}, retouch_count = #{retouch_count}, service_description = #{service_description}, requirement = #{requirement}, status=#{status}
+		where no = #{no}
+	</update>
+	
 	<select id="selectPost" resultType="com.woongjin.woongs.model.PostDto">
 		select * from post
 	</select>
 	
 	<select id="selectPostByNo" parameterType="int" resultType="com.woongjin.woongs.model.PostDto">
 		select * from post where no = #{no}
+	</select>
+	
+	<select id="getPostsById" parameterType="String" resultType="com.woongjin.woongs.model.PostDto">
+		select * from post where user_id = #{user_id}
+	</select>
+	
+	<select id="getPostImageByPostNo" parameterType="int" resultType="int">
+		select count(*) from post where no = #{post_no}
+	</select>
+	
+	<select id="selectRecentPostById" parameterType="String" resultType="com.woongjin.woongs.model.PostDto">
+		select * from post where user_id = #{user_id} order by no desc limit 1;
 	</select>
 	
 	<select id="getPostsByTag" parameterType="int" resultType="com.woongjin.woongs.model.PostDto">

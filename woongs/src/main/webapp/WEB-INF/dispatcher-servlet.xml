@@ -143,4 +143,7 @@
 	<bean id="TCDao" class="com.woongjin.woongs.model.TCDao"
 		p:sqlSessionFactory-ref="sqlSessionFactory"></bean>
 		
+	<bean id="ProposalDao" class="com.woongjin.woongs.model.ProposalDao"
+		p:sqlSessionFactory-ref="sqlSessionFactory"></bean>	
+		
 </beans>

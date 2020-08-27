@@ -94,7 +94,7 @@ function selectTag(){
 	<input type="submit" value="저장">
 	</form>
 	
-	<form class="Image" action="insertPost" method="post" enctype="multipart/form-data">
+	<form class="image" action="insertPost" method="post" enctype="multipart/form-data">
 	이미지 : <input type="file" name="report" method="post" >
 	<input type="hidden" name="status" value="3">
 		<input type="submit" value="저장">
@@ -243,7 +243,7 @@ function selectTag(){
 	<% } %>
 	
 	<% if(dto.getStatus() > 1) { %>
-	<form class="Image" action="updatePost" method="post" enctype="multipart/form-data">
+	<form class="image" action="updatePost" method="post" enctype="multipart/form-data">
 	<% if(dto.getThumbnail() == null) {
 	
 		%> 

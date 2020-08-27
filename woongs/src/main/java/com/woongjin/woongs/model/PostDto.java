@@ -1,19 +1,19 @@
 package com.woongjin.woongs.model;
 
 public class PostDto {
-	private int no;
-	private String user_id;
-	private 	int category_first;
-	private int category_second;
-	private String thumbnail;
-	private String title;
-	private String description;
-	private int price;
-	private int worktime;
-	private int retouch_count;
-	private String service_description;
-	private String requirement;
-	private int status;
+	int no;
+	String user_id;
+	int category_first;
+	int category_second;
+	String thumbnail;
+	String title;
+	String description;
+	int price;
+	int worktime;
+	int retouch_count;
+	String service_description;
+	String requirement;
+	int status;
 
 	@Override
 	public String toString() {
@@ -22,6 +22,14 @@ public class PostDto {
 				+ ", description=" + description + ", price=" + price + ", worktime=" + worktime + ", retouch_count="
 				+ retouch_count + ", service_description=" + service_description + ", requirement=" + requirement
 				+ ", status=" + status + "]";
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
 	}
 
 	public int getNo() {
@@ -118,14 +126,6 @@ public class PostDto {
 
 	public void setRequirement(String requirement) {
 		this.requirement = requirement;
-	}
-
-	public int getStatus() {
-		return status;
-	}
-
-	public void setStatus(int status) {
-		this.status = status;
 	}
 
 }

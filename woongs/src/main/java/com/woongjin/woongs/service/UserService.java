@@ -29,10 +29,6 @@ public class UserService {
 		return dao.userLogin(vo);
 	}
 
-	public void userDelete(UserDto vo) throws Exception {
-		dao.userDelete(vo);
-	}
-	
 	public void sendCode(Map<String, String> map) {
 		dao.sendCode(map);
 	}
@@ -49,9 +45,14 @@ public class UserService {
 		dao.updateCode(map);
 
 	}
-	
+
 	public int getUserCount() {
 		// TODO Auto-generated method stub
 		return dao.getUserCount();
+	}
+
+	public int IsUser(String email) {
+		// TODO Auto-generated method stub
+		return dao.IsUser(email);
 	}
 }

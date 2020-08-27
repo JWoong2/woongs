@@ -5,34 +5,13 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
-<script type="text/javascript">
-$(document).ready(function(){
-	$('#test').submit(function(){
-		var code = $("#code").val();
-		if(code == '${code}'){
-			alert('인증됐습니다')
-		}else{
-			alert('틀렸습니다')
-			return false;
-		}
-	})
-})
-</script>
 <body>
-
-	${code} 
-<!-- 	<p>이메일을 확인해주세요</p>
-	<label for="code">code : </label> 
-	<input type="text" id="code" value="2">
-	<input type="button" id="check" value="인증">  -->
-	
-	
-	<form action="code" method="post" id="test">
+	<p>이메일을 확인해주세요</p>
+	<form action="code" method="post">
 		<label for="code">인증번호 입력</label>
 		<input type="text" id="code" name="code">
-		<input type="submit" value="인증" id="check">
+		<input type="submit" value="인증">
 	</form>
 </body>
 </html>

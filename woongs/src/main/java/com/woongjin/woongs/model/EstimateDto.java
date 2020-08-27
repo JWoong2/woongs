@@ -12,11 +12,6 @@ public class EstimateDto {
 	private String proposal;
 	private String content;
 
-	private String name;
-	private String sub_name;
-	private String thumbnail;
-	
-	
 	public int getPost_no() {
 		return post_no;
 	}
@@ -97,35 +92,4 @@ public class EstimateDto {
 		this.content = content;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getSub_name() {
-		return sub_name;
-	}
-
-	public void setSub_name(String sub_name) {
-		this.sub_name = sub_name;
-	}
-
-	public String getThumbnail() {
-		return thumbnail;
-	}
-
-	public void setThumbnail(String thumbnail) {
-		this.thumbnail = thumbnail;
-	}
-
-	
-	
-	
-	
-	
-	
-	
 }

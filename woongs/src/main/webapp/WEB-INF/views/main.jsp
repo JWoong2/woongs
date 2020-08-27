@@ -60,7 +60,9 @@
 	if (user_id != null) {
 	%>
 	"${user_id}" 님 환영합니다
-	<a href="logout" class="logout">로그아웃</a><a href="signout"> 회원탈퇴</a><a href="chatTest">채팅 테스트</a>
+	<a href="logout" class="logout">로그아웃</a>
+	<a href="signout"> 회원탈퇴</a>
+	<a href="chatTest">채팅 테스트</a>
 	<a href="chatRoom">채팅목록</a>
 	<%} else {%>
 	<a href="register">회원가입</a>
@@ -70,8 +72,9 @@
 		}
 	%>
 
-	<a href="find">비밀번호 찾기</a></td>
+	<a href="find">비밀번호 찾기</a>
 	<a href="upload"> 업로드 페이지</a>
+	<a href="callback">콜백페이지</a>
 	<a href="myPage"> 마이 페이지</a>
 	<a href="wishList"> 찜한목록</a>
 	<a href="buylist"> 구매페이지</a>
@@ -81,7 +84,8 @@
 	<a href="coupon"> 쿠폰 확인/등록 페이지 (사용자)</a>
 
 	<img src="resources/Images/test.jpg">
-
+	<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 	<script>
 		$(function() {
 			$.ajax({
@@ -92,7 +96,7 @@
 					function(args) { //응답이 성공 상태 코드를 반환하면 호출되는 함수
 						for (var i = 0; i < args.length; i++) {
 							$("#tag").append(
-									"<a href='cate?=" + args[i].no + "'>"
+									"<a href='category?no=" + args[i].no + "'>"
 											+ args[i].name + "</option>");
 							$("#cate").after(
 									"<div id='"+args[i].no+"'>" + args[i].name
