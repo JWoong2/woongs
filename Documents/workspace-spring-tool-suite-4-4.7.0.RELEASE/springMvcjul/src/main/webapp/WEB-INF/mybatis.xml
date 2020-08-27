@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+      http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+      http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+	<context:property-placeholder
+		location="classpath:db.properties" local-override="true" />
+	<!-- //src에 위치하고 있는 db.properties라는뜻 //이렇게 하면 여기에 있는 정보를 el로 꺼내올 수 있음 -->
+
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp2.BasicDataSource">
+		<property name="driverClassName" value="${driver}" />
+		<property name="url" value="${url}" />
+		<property name="username" value="${username}" />
+		<property name="password" value="${password}" />
+	</bean>
+	<!-- 이렇게하면 커넥션풀이 만들어짐 -->
+
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<tx:annotation-driven
+		transaction-manager="transactionManager" />
+
+
+	<bean class="org.mybatis.spring.SqlSessionFactoryBean"
+		id="sqlSessionFactory">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mapperLocations" value="classpath:sql/*.xml"></property>
+		<property name="configLocation" value="classpath:config.xml"></property>
+	</bean>
+
+</beans>
+
+
+
+<!-- <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate"> 
+	<constructor-arg index="0" ref="sqlSessionFactory" /> </bean> 여기까지 고정된 형태이고 
+	mapper파일이 추가되면 sql폴더 안에만 만들어주면 됨 <bean id="memDao" class="spring.mybatis.MemDao"> 
+	<property name="session"> <ref bean="sqlSession"/> </property> </bean> -->
+<!-- <bean id="memDao" class="spring.mybatis.MemDao"> <property name="sqlSessionFactory"> 
+	<ref bean="sqlSessionFactory"/> </property> </bean> <bean id="service" class="spring.mybatis.MemService" 
+	p:dao-ref="memDao"/> <bean id="deptDao" class="spring.dept.DeptDao"> <property 
+	name="sqlSessionFactory"> <ref bean="sqlSessionFactory"/> </property> </bean> 
+	<bean id="deptservice" class="spring.dept.DeptService" p:dao-ref="deptDao"/> 
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"> 
+	<property name="dataSource" ref="dataSource" /> </bean> <tx:annotation-driven 
+	transaction-manager="transactionManager" /> -->

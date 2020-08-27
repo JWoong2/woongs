@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="profile">
+
+	<insert id="updateintro" parameterType="map">
+		update User u inner join
+		profile p on u.user_name = p.user_id
+		set u.nick_name = #{nick_name},
+		p.introduce = #{introduce}
+		where u.user_name = #{user_id}
+	</insert>
+
+	<update id="updatetag" parameterType="spring.model.ProfileDto">
+		update profile
+		set tag =
+		#{tag},sub_tag = #{sub_tag}
+		where user_id= #{user_id}
+	</update>
+
+
+	<select id="tags" resultType="spring.model.TagDto">
+		select no, name from tag
+	</select>
+
+	<select id="sub_tags" resultType="spring.model.Sub_tagDto"
+		parameterType="int">
+		select * from sub_tag where tag_no=#{tag_no} order by
+		no
+	</select>
+
+	<update id="univtags" parameterType="spring.model.ProfileDto">
+		update profile
+		set
+		univ_name =
+		#{univ_name},
+		univ_major = #{univ_major},
+		univ_status = #{univ_status}
+		where user_id = #{user_id}
+	</update>
+
+
+	<!-- 프로필 학교 -->
+	<update id="updatecareer" parameterType="spring.model.CareerDto">
+		update career
+		set
+		company_name = #{company_name},
+		dept_name = #{dept_name},
+		position = #{position},
+		year = #{year},
+		month = #{month}
+		where user_id = #{user_id}
+	</update>
+
+
+	<!-- 프로필 자격증 -->
+	<update id="updatecerti" parameterType="spring.model.CertiDto">
+		update certification
+		set
+		issu_date = #{issu_date},
+		issu_agency = #{issu_agency},
+		certification_name = #{certification_name}
+		where user_id =#{user_id}
+	</update>
+	
+</mapper>   

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ProposalMapper">
+	<select id="getProposalsById" parameterType="String"
+		resultType="com.woongjin.woongs.model.ProposalDto">
+		select * from proposal_file where user_id = #{user_id}
+	</select>
+
+	<select id="getProposalsByNo" parameterType="int"
+		resultType="com.woongjin.woongs.model.ProposalDto">
+		select * from proposal_file where post_no = #{post_no}
+	</select>
+
+	<select id="getOriginalName" parameterType="int" resultType="String">
+		select original_file_name from proposal_file where idx = #{idx}
+	</select>
+	
+	<select id="getAlterpath" parameterType="int" resultType="String">
+		select alterpath_file_name from proposal_file where idx = #{idx}
+	</select>
+
+	<insert id="insertProposalFile" parameterType="map">
+		insert into
+		proposal_file(original_file_name, stored_file_name,
+		alterpath_file_name, file_size, post_no, user_id)
+		values(
+		#{original_file_name}, #{stored_file_name}, #{alterpath_file_name},
+		#{file_size}, #{post_no}, #{user_id})
+	</insert>
+</mapper>

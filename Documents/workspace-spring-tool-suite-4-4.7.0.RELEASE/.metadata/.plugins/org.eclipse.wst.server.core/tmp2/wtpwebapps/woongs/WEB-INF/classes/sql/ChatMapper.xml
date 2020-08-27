@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Chat">
+	<insert id="createRoom">
+		insert into CHATROOM (client_id , worker_id, post_no)
+		values(#{client_id}, #{worker_id} , #{post_no} )
+	</insert>
+
+	<select id="isRoom" resultType="com.woongjin.woongs.model.ChatRoomVO">
+		select * from CHATROOM WHERE client_id = #{client_id} and
+		worker_id = #{worker_id}
+		and post_no = #{post_no}
+	</select>
+
+	<select id="getPreviousChat" parameterType="int" resultType="com.woongjin.woongs.model.MessageVO">
+		select * from message where chatroom_id = #{chatroom_id}
+	</select>
+
+	<insert id="insertMessage">
+		insert into MESSAGE (message_sender , message_receiver, message_content, message_sendTime ,chatroom_id, client_id , worker_id, post_no) 
+		values (#{message_sender}, #{message_receiver}, #{message_content}, #{message_sendTime} , #{chatroom_id} , #{client_id},#{worker_id} , #{post_no})
+	</insert>
+
+	<select id="getPartner" resultType="com.woongjin.woongs.model.MessageVO">
+		SELECT client_id from MESSAGE where worker_id =#{worker_id} and post_no = #{post_no}
+	</select>
+	
+	<select id="getProfile" parameterType="String" resultType="String">
+		select image from USER WHERE email = #{user_id}
+	</select>
+
+	<select id="getName" resultType="String">
+		select user_name from USER where email = #{user_id}
+	</select>
+
+	<select id="getMessageList" resultType="com.woongjin.woongs.model.MessageVO">
+		select m.*, user_name, image 
+		from MESSAGE m left outer join USER u on m.message_sender = u.email 
+		where chatroom_id = #{chatroom_id}
+	</select>
+
+	<select id="getRoomList" resultType="com.woongjin.woongs.model.ChatRoomVO">
+		select * from CHATROOM where client_id = #{client_id}
+	</select>
+	<select id="getRoomList2" resultType="com.woongjin.woongs.model.ChatRoomVO">
+		select * from CHATROOM where worker_id = #{worker_id}
+	</select>
+
+	<select id="getRecentMessage" parameterType="String" resultType="com.woongjin.woongs.model.MessageVO">
+		<!-- select m.* , p.title, c.chatroom_id , c.worker_id from post p, MESSAGE m left outer join chatroom c on m.chatroom_id = c.chatroom_id 
+		where c.chatroom_id = #{chatroom_id} and p.no = c.post_no order by message_id desc limit 1; -->
+		
+		select u.nick_name as worker_name, u.image as worker_image, m.* , p.title, c.chatroom_id , c.worker_id from user u, post p, MESSAGE m left outer join chatroom c on m.chatroom_id = c.chatroom_id 
+		where c.chatroom_id = #{chatroom_id} and p.no = c.post_no and u.email = c.worker_id order by message_id desc limit 1;
+	</select>
+	
+	<select id="getRecentMessageWorker" parameterType="String" resultType="com.woongjin.woongs.model.MessageVO">
+		<!-- select m.* , p.title, c.chatroom_id , c.worker_id from post p, MESSAGE m left outer join chatroom c on m.chatroom_id = c.chatroom_id 
+		where c.chatroom_id = #{chatroom_id} and p.no = c.post_no order by message_id desc limit 1; -->
+		
+		select u.nick_name as client_name, u.image as client_image, m.* , p.title, c.chatroom_id , c.worker_id from user u, post p, MESSAGE m left outer join chatroom c on m.chatroom_id = c.chatroom_id 
+		where c.chatroom_id = #{chatroom_id} and p.no = c.post_no and u.email = c.client_id order by message_id desc limit 1;
+	</select>
+
+	<!-- <select id="getTutorId" resultType="String">
+		select tutor_id from TUTOR where client_id = #{client_id}
+	</select> -->
+
+	<update id="updateReadTime" parameterType="map">
+		<!-- update MESSAGE set message_readTime = NOW() 
+		where worker_id = #{worker_id} AND post_no = #{post_no} AND
+		message_sender = worker_id and client_id = #{client_id} -->
+		
+		update MESSAGE set message_readTime = NOW() 
+		where chatroom_id = #{chatroom_id} and message_receiver = #{user_id} and
+		message_readTime is null
+	</update>
+	
+	<update id="updateReadTimeWorker">
+		update MESSAGE set message_readTime = NOW() where worker_id =
+		#{worker_id} AND post_no= #{post_no} AND
+		message_readTime = message_sendTime and message_sender = client_id
+		and client_id = #{client_id}
+
+	</update>
+
+	<select id="getUnReadCount" parameterType="com.woongjin.woongs.model.ChatRoomVO" resultType="int">
+	<!-- 	select count(*) from MESSAGE where client_id = #{client_id} and
+		worker_id = #{worker_id} AND post_no =
+		#{post_no} AND message_readTime = message_sendTime and
+		message_sender = worker_id; -->
+		
+		select count(*) from MESSAGE where client_id = #{client_id} and
+		worker_id = #{worker_id}
+        AND chatroom_id = #{chatroom_id} 
+		AND message_readTime is null and
+		message_receiver = #{client_id}
+	</select>
+	
+	<select id="getUnReadCountWorker" parameterType="com.woongjin.woongs.model.ChatRoomVO" resultType="int">
+		select count(*) from MESSAGE where client_id = #{client_id} and
+		worker_id = #{worker_id}
+        AND chatroom_id = #{chatroom_id}
+		AND message_readTime is null and
+		message_receiver = #{worker_id}
+	</select>
+
+	<select id="getAllCount" resultType="int">
+		select count(*) from MESSAGE WHERE (worker_id =
+		#{worker_id} and message_readTime = message_sendTime and
+		message_sender != #{client_id}) or (client_id = #{client_id}
+		and message_readTime = message_sendTime and message_sender !=
+		#{client_id})
+	</select>
+</mapper>

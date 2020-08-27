@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="tag">
+	<select id="tags" resultType="spring.model.TagDto">
+		select tag_num, name from tag
+	</select>
+	<select id="sub_tags" resultType="map" parameterType="int">
+		select num,name from sub_tag where tag_num=#{tag_num} order by num
+	</select>
+
+
+</mapper>
