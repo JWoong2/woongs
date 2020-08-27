@@ -8,10 +8,22 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from wishlist
 	</select>
 
-	<insert id="insertCart"
-		parameterType="map">
+	<insert id="insertCart" parameterType="map">
 		insert into wishlist(user_id, post_no)
 		values(#{user_id}, #{post_no})
+	</insert>
+
+	<select id="showbuy" resultType="com.woongjin.woongs.model.BuyListDto" parameterType="String">
+		select b.buy_date, p.user_id, p.title, p.thumbnail, p.price, p.description from BUY_LIST b, post p where b.post_no = p.no and p.no = #{post_no} order by buy_date desc limit 1
+	</select>
+
+	<select id="showRecentBuyList" resultType="com.woongjin.woongs.model.BuyListDto" parameterType="String">
+		select b.buy_date, p.user_id, p.title, p.thumbnail, p.price, p.description from BUY_LIST b, post p where b.post_no = p.no and b.user_id = #{user_id} order by buy_date desc
+	</select>
+
+	<insert id="buy" parameterType="map">
+		insert into buy_list(user_id, post_no, buy_date)
+		values(#{user_id}, #{post_no} , #{buy_date})
 	</insert>
 
 	<select id="wishList" parameterType="String" resultType="com.woongjin.woongs.model.PostDto">

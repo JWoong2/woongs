@@ -9,7 +9,7 @@
 <body>
 <form action="userDelete" method="post">
 
-아이디  : <input type="text" name="email">
+         아이디  : <input type="text" name="email">
 
 	비밀번호 : <input type="text" name="password">
 	

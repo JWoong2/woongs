@@ -7,6 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	꾸어어어어어어어어엉ㅇ어어엉
+<script>
+		$(document).ready(function(){
+		alert('로그인이 되었습니다')		
+		return "main";
+	})
+	</script>
 </body>
 </html>

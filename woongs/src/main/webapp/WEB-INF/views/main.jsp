@@ -40,15 +40,20 @@
 </style>
 </head>
 <body>
-
-	<%-- <c:if test="${user_id == admin }"> --%>
-<%-- 	<c:if test="${user.verify == 2828 }">
-		<a href="../index">관리자</a>
-		</c:if> --%>
-	
+<%-- 	<c:if> 태그에 사용될 수 있는 속성은 다음 세 가지 입니다.
+- test : 필수 속성으로 속성값으로 EL 비교식을 가집니다.
+- var : 조건 결과를 저장할 변수를 지정합니다.
+- scope : 조건 결과를 저장할 변수의 저장 scope을 지정합니다. --%>
+		<%  System.out.println("main.jsp : " + session.getAttribute("admin"));  %>
 		
-
-
+		
+<c:if test="${admin}" var="admin" scope="session">
+	어드민이당
+</c:if>
+			
+ 	 <c:if test="${user_id == admin }"> 
+		<a href="../index">관리자</a>
+</c:if>
 	<%
 		String user_id = (String) session.getAttribute("user_id");
 	
@@ -64,10 +69,12 @@
 	<%
 		}
 	%>
+
 	<a href="find">비밀번호 찾기</a></td>
 	<a href="upload"> 업로드 페이지</a>
 	<a href="myPage"> 마이 페이지</a>
 	<a href="wishList"> 찜한목록</a>
+	<a href="buylist"> 구매페이지</a>
 	<br>
 	<a href="coupon"> 쿠폰 발행 페이지 (관리자)</a> 사용자 아이디로 로그인했다면 쿠폰확인 페이지로 링크
 	<br>
@@ -118,10 +125,10 @@
 													"<div class='post' id='"+args[i].no+"'><a href='cart?post_no="
 															+ args[i].no
 															+ "'>찜하기</a><img src="+args[i].thumbnail+">"
-															+ args[i].title
-															+ args[i].user_id
-															+ args[i].price
-															+ args[i].eval
+															+ args[i].title + " "
+															+ args[i].user_id + " "
+															+ args[i].price+ " "
+															/* + args[i].eval+ " " */
 															+ "<a href='#none' id='heart"
 															+ args[i].no
 															+ "' class='wish off' onclick='changeHeart($(this).attr("

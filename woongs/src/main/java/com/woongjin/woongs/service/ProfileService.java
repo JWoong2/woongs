@@ -74,7 +74,7 @@ public class ProfileService {
 
 	public ProfileMainDto selectprofile(String user_id) {
 		// TODO Auto-generated method stub
-		return null;
+		return dao.selectprofile(user_id);
 	}
 	
 

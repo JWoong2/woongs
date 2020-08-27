@@ -75,10 +75,13 @@
 		<item key="WizardProjectsImportPage.STORE_CLOSE_CREATED_PROJECTS_ID" value="false"/>
 		<item key="WizardProjectsImportPage.STORE_HIDE_CONFLICTING_PROJECTS_ID" value="false"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="C:\Users\82102\Documents\workspace-spring-tool-suite-4-4.7.0.RELEASE\woongs"/>
 			<item value=""/>
 			<item value="C:\Users\82102\Documents\workspace-spring-tool-suite-4-4.7.0.RELEASE\woongs12"/>
 		</list>
 		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
+			<item value="C:\Users\82102\Desktop\springWebEx.zip"/>
+			<item value="C:\Users\82102\Desktop\springboard.zip"/>
 			<item value="C:\Users\82102\Desktop\woongs.zip"/>
 			<item value="C:\Users\82102\Desktop\woooooooooongs.zip"/>
 			<item value="C:\Users\82102\Desktop\데헷.zip"/>

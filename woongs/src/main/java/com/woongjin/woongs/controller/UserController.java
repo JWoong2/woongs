@@ -43,7 +43,7 @@ public class UserController {
 	public String postRegister(UserDto vo) throws Exception {
 		RandomWord rd = new RandomWord();
 		int count = service.getUserCount();
-		
+
 		vo.setImage("resources/default.png");
 		vo.setNick_name(rd.getAdjective() + rd.getNoun() + count);
 		service.register(vo);
@@ -94,7 +94,7 @@ public class UserController {
 			EmailDto email = new EmailDto();
 
 			email.setReceiver(receiver);
-			email.setSubject("비밀번호도 까먹냐 ㅋㅋ");
+			email.setSubject("비밀번호 오류입니다");
 			email.setContent("사랑합니다. 저거 인증번호는 이겁니다 : " + temp.toString());
 
 			boolean result = emailService.sendMail(email);
@@ -121,9 +121,10 @@ public class UserController {
 		UserDto dto = service.userLogin(vo);
 
 		if (dto != null) {
-			request.getSession().setAttribute("user_id", vo.getEmail());
+			request.getSession().setAttribute("user_id", dto.getEmail());
 
-			if (vo.getIsAdmin() == 1) {
+			System.out.println("test is Admin : " + dto.getIsAdmin());
+			if (dto.getIsAdmin() == 1) {
 				request.getSession().setAttribute("admin", true);
 				return "../index";
 			} else {
@@ -131,7 +132,7 @@ public class UserController {
 			}
 
 			request.getSession().setAttribute("userInfo", dto);
-			
+
 			return "main";
 		} else {
 			return "member/loginFalse";
@@ -169,35 +170,36 @@ public class UserController {
 		System.out.println(password);
 		return "member/updateDone";
 	}
-	
+
 	@RequestMapping("/logout")
-    public String logout(HttpSession session) {
-        session.invalidate();
-        return "main";
-    }
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "main";
+	}
+
 	// 탈퇴페이지 이동 get
-	@RequestMapping(value = "/userDelete", method = RequestMethod.GET)
-	public String userDelete() throws Exception {
+	@RequestMapping(value = "/signout", method = RequestMethod.GET)
+	public String signout() throws Exception {
 		return "member/signout";
 	}
-	
-	@RequestMapping(value="/userDelete", method = RequestMethod.POST)
-	public String userDelete(HttpSession session,HttpServletRequest request, UserDto vo, String password) throws Exception {
-		System.out.println("pass"+vo.getEmail());
+
+	@RequestMapping(value = "/userDelete", method = RequestMethod.POST)
+	public String userDelete(HttpSession session, HttpServletRequest request, UserDto vo, String password)
+			throws Exception {
+		System.out.println("pass" + vo.getEmail());
 		System.out.println(vo.toString());
-		System.out.println("pass"+vo.getPassword());
-		
+		System.out.println("pass" + vo.getPassword());
+
 		String pass = vo.getPassword();
 		String passwordchk = request.getParameter("password");
-		if(!(pass.equals(passwordchk))) {
+		if (!(pass.equals(passwordchk))) {
 			System.out.println("비밀번호가 틀립니다");
 			return "member/signout";
 		}
-			service.userDelete(vo);
-			session.invalidate();
-			return "main";
-		
-		}
-	
-	
+		service.userDelete(vo);
+		session.invalidate();
+		return "main";
+
+	}
+
 }

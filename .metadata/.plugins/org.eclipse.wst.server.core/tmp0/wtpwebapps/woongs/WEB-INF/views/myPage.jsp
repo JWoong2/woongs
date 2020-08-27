@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<a href="profileMain">프로필 등록</a>
 </body>
 </html>

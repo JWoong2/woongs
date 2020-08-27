@@ -5,7 +5,9 @@
 	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
-	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xsi:schemaLocation="http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.3.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
@@ -94,6 +96,28 @@
 		</property>
 	</bean>
 
+	<bean id="chatHandler"
+		class="com.woongjin.woongs.handler.ChatWebSocketHandler" />
+
+	<websocket:handlers>
+		<websocket:mapping handler="chatHandler"
+			path="/chat" />
+		<websocket:handshake-interceptors>
+			<bean
+				class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor" />
+		</websocket:handshake-interceptors>
+		<websocket:sockjs />
+	</websocket:handlers>
+	<mvc:default-servlet-handler />
+
+	<bean id="echoHandler" class="com.woongjin.woongs.handler.EchoHandler" />
+
+	<websocket:handlers>
+		<websocket:mapping handler="echoHandler"
+			path="/echo" />
+		<websocket:sockjs />
+	</websocket:handlers>
+
 	<!-- dao 생성 부분 -->
 	<bean id="PostDao" class="com.woongjin.woongs.model.PostDao"
 		p:sqlSessionFactory-ref="sqlSessionFactory"></bean>
@@ -109,4 +133,14 @@
 
 	<bean id="CartDao" class="com.woongjin.woongs.model.CartDao"
 		p:sqlSessionFactory-ref="sqlSessionFactory"></bean>
+			
+	<bean id="ProfileDao" class="com.woongjin.woongs.model.ProfileDao"
+		p:sqlSessionFactory-ref="sqlSessionFactory"></bean>
+
+<bean class="com.woongjin.woongs.model.ChatDao" id="ChatDao"
+		p:sqlSessionFactory-ref="sqlSessionFactory"/>
+	
+	<bean id="TCDao" class="com.woongjin.woongs.model.TCDao"
+		p:sqlSessionFactory-ref="sqlSessionFactory"></bean>
+		
 </beans>

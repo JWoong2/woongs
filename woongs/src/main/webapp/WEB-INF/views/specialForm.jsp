@@ -111,7 +111,7 @@
    <br>
    <br>
    
-   전문가 소개<br>
+<%--    전문가 소개<br>
    ${dto1.nick_name}<br>
    ${dto1.introduce}<br><br>
    
@@ -130,7 +130,7 @@
    보유자격증<br>
    ${dto1.issu_agency} 
    ${dto1.issu_date}  
-   ${dto1.certification_name}<br><br>
+   ${dto1.certification_name}<br><br> --%>
 
 </body>
 </html>

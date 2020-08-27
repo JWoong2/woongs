@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <aop-reference-model>
 <aop-project name="woongs"/>
+<aop-project name="SpringMvcJul"/>
+<aop-project name="SpringBoard"/>
 </aop-reference-model>

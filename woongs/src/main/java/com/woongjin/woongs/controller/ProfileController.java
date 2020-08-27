@@ -62,7 +62,7 @@ public class ProfileController {
 	      Map<String, String> map = new HashMap<String, String>();
 
 	      // 이미지 경로 저장위치에 따라 바꿔야함
-	      String path = "C:\\Users\\gusql\\Documents\\workspace-spring-tool-suite-4-4.7.0.RELEASE\\profile\\src\\main\\webapp\\resources\\Images";
+	      String path = "C:\\Users\\82102\\Documents\\workspace-spring-tool-suite-4-4.7.0.RELEASE\\profile\\src\\main\\webapp\\resources\\Images";
 	      String alterpath = "resources\\Images\\";
 
 	      File file = new File(path);
@@ -92,10 +92,10 @@ public class ProfileController {
 
 	      profile.updateintro(map);
 	      
-	      
-	      ProfileMainDto dto1 =  profile.selectprofile(user_id);
-	      System.out.println(dto1.getIntroduce());
-	      m.addAttribute("dto1",dto1);
+			/*
+			 * ProfileMainDto dto1 = profile.selectprofile(user_id);
+			 * System.out.println(dto1.getIntroduce()); m.addAttribute("dto1",dto1);
+			 */
 
 	      return "specialForm";
 	   }

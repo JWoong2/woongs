@@ -26,3 +26,6 @@
 
 8월 20, 2020 09:28:26.271 NEW SESSION
 8월 20, 2020 09:28:26.271 [11316:11436:0820/092826.271:ERROR:account_info_fetcher.cc(60)] OnGetTokenFailure: Invalid credentials (credentials rejected by client).
+
+8월 27, 2020 09:52:30.211 NEW SESSION
+8월 27, 2020 09:52:30.211 [12440:10428:0827/095230.201:ERROR:mcs_client.cc(755)] Received close command, resetting connection.

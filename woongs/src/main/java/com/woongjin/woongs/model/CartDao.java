@@ -42,8 +42,18 @@ public class CartDao extends SqlSessionDaoSupport {
 		getSqlSession().insert("CartMapper.check",Map);
 	}
 	
-	
-	
-	
+	public void buy (Map<String, String> map) {
+		getSqlSession().insert("CartMapper.buy",map);
+	}
+
+	public BuyListDto showBuy(String post_no) {
+		// TODO Auto-generated method stub
+		return getSqlSession().selectOne("CartMapper.showbuy", post_no);
+	}
+
+	public List<BuyListDto> showRecentBuyList(String user_id) {
+		// TODO Auto-generated method stub
+		return getSqlSession().selectList("CartMapper.showRecentBuyList", user_id);
+	}
 	
 }

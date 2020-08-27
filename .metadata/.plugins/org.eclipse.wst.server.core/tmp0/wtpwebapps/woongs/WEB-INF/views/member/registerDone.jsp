@@ -7,6 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
- 오올오ㅓㅗㅓ엉
+<script>
+	$(document).ready(function(){
+		alert(' 회원등록 되었습니다 .')		
+		return "main";
+	})
+</script>
 </body>
 </html>
