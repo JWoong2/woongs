@@ -111,6 +111,7 @@ public class CartController {
 		PrintWriter out = resp.getWriter();
 
 		out.print(json.toJson(list));
+	
 	}
 
 	@RequestMapping(value = "/deleteCart", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")

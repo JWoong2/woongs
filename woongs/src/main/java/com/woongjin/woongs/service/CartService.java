@@ -47,7 +47,6 @@ public void check_cancel(Map<String, Object> paramMap) {
 	dao.check_cancel(paramMap);
 	}
 
-
 public void buy(Map<String, String> map) {
 	// TODO Auto-generated method stub
 	dao.buy(map);
