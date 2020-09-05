@@ -97,7 +97,7 @@ div#CartButton{
 								$("#wishList")
 										.append(
 												"<input type='checkbox' name='report' value='"+args[i].no+"'/><a class='asdf' href='cate?="
-														+ "'> " //<-이부분을 모르겠음
+														+ "'> " 
 														+"<img src="+ args[i].thumbnail +">"
 														+ args[i].no
 														+ args[i].title
@@ -123,12 +123,6 @@ div#CartButton{
 					console.log(args.length);
 					for (var i = 0; i < args.length; i++) {
 						$("#table").append(
-								/* <th>체크 </th>
-								<th>이미지</th>
-								<th>제목 </th>
-								<th>작성자</th>
-								<th>설명</th>
-								<th>가격</th> */
 								
 								"<tr><td><input type='checkbox' name='report' value='"+args[i].no+"'/> </td>"
 												+"<td><img src="+ args[i].thumbnail +"></td>" 

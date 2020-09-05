@@ -3,14 +3,38 @@
 <%@page import="java.net.URLEncoder"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	
 <!DOCTYPE html>
 <html>
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
+<style>
+	div.logintool{
+	    margin:auto;
+   		width: 100%; 
+   		height: 100vh; 
+   		display: -webkit-box; 
+   		display: -ms-flexbox; 
+   		display: flex; 
+   		-webkit-box-align: center; 
+   		-ms-flex-align: center; 
+   		align-items: center; 
+   		-webkit-box-pack: center; 
+   		-ms-flex-pack: center; 
+   		justify-content: center;
+
+
+	}
+</style>
 </head>
 <body>
+
 	<h2>로그인</h2>
+	<div class="logintool" >
+		<h2>로그인</h2>
 	<form action="login" method="post">
 		<label for="email">아이디</label> <input type="text" id="email"
 			name="email"> <label for="password">비밀번호</label> <input
@@ -36,4 +60,6 @@
 		href="https://kauth.kakao.com/oauth/authorize?client_id=21af7be4191313b13cf6bdcfe9845dc0&redirect_uri=http://localhost:8080/kakaologin&response_type=code">
 		<img src="/resources/kakao_login_medium_narrow.png">
 	</a>
+	</div>
+	</body>
 </html>
